@@ -1,10 +1,10 @@
 package com.github.javafaker;
 
-import com.github.javafaker.service.FakeValuesService;
-import com.github.javafaker.service.RandomService;
-
 import java.util.Locale;
 import java.util.Random;
+
+import com.github.javafaker.service.FakeValuesService;
+import com.github.javafaker.service.RandomService;
 
 /**
  * Provides utility methods for generating fake strings, such as names, phone
@@ -103,7 +103,7 @@ public class Faker {
     }
 
     public Faker(Locale locale) {
-        this(locale, (Random)null);
+        this(locale, (Random) null);
     }
 
     public Faker(Random random) {
@@ -246,9 +246,11 @@ public class Faker {
     }
 
     /**
-     * Returns a string with the '#' characters in the parameter replaced with random digits between 0-9 inclusive.
+     * Returns a string with the '#' characters in the parameter replaced with
+     * random digits between 0-9 inclusive.
      * <p>
-     * For example, the string "ABC##EFG" could be replaced with a string like "ABC99EFG".
+     * For example, the string "ABC##EFG" could be replaced with a string like
+     * "ABC99EFG".
      *
      * @param numberString
      * @return
@@ -258,10 +260,11 @@ public class Faker {
     }
 
     /**
-     * Returns a string with the '?' characters in the parameter replaced with random alphabetic
-     * characters.
+     * Returns a string with the '?' characters in the parameter replaced with
+     * random alphabetic characters.
      * <p>
-     * For example, the string "12??34" could be replaced with a string like "12AB34".
+     * For example, the string "12??34" could be replaced with a string like
+     * "12AB34".
      *
      * @param letterString
      * @return
@@ -271,10 +274,11 @@ public class Faker {
     }
 
     /**
-     * Returns a string with the '?' characters in the parameter replaced with random alphabetic
-     * characters.
+     * Returns a string with the '?' characters in the parameter replaced with
+     * random alphabetic characters.
      * <p>
-     * For example, the string "12??34" could be replaced with a string like "12AB34".
+     * For example, the string "12??34" could be replaced with a string like
+     * "12AB34".
      *
      * @param letterString
      * @param isUpper
@@ -603,14 +607,20 @@ public class Faker {
         return lebowski;
     }
 
-    public Medical medical(){return medical;}
+    public Medical medical() {
+        return medical;
+    }
 
-    public Country country(){ return country;}
+    public Country country() {
+        return country;
+    }
 
-    public Animal animal(){ return animal; }
+    public Animal animal() {
+        return animal;
+    }
 
     public BackToTheFuture backToTheFuture() {
-        return  backToTheFuture;
+        return backToTheFuture;
     }
 
     public PrincessBride princessBride() {
@@ -646,7 +656,8 @@ public class Faker {
     }
 
     /**
-     * Allows the evaluation of native YML expressions to allow you to build your own.
+     * Allows the evaluation of native YML expressions to allow you to build your
+     * own.
      * <p>
      * The following are valid expressions:
      * <ul>
@@ -664,4 +675,26 @@ public class Faker {
     public String expression(String expression) {
         return this.fakeValuesService.expression(expression, this);
     }
+
+    /* public Object buildClass(Object o) throws NoSuchMethodException, SecurityException, IllegalArgumentException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
+
+        Field[] fields = o.getClass().getDeclaredFields();
+        Method method = null;
+      
+        for (Field field : fields) {
+            FakeField fd = field.getAnnotation(FakeField.class);
+            if (fd != null) {
+                method = fd.faker().getMethod(fd.method());
+            }
+            if (method != null) {
+                Object obj = fd.faker().getDeclaredConstructor(this.getClass()).newInstance(this);
+                field.setAccessible(true);
+                field.set(o, method.invoke(obj));
+            }
+        }
+        return o;
+    }
+ */
+
 }
